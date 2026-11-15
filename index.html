@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Body Temple Gym | Jaipur's Elite Fitness Destination</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Oswald (Headings) & Inter (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Oswald', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            obsidian: '#121212',
+            concrete: '#F5F5F5',
+            crimson: '#FF3B30',
+            blaze: '#EA6C36',
+            darkCard: '#1E1E1E'
+          },
+          animation: {
+            'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            'fade-in': 'fadeIn 1s ease-out forwards',
+          },
+          keyframes: {
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(40px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Core Styling */
+    body {
+      background-color: #121212;
+      color: #F5F5F5;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #121212; }
+    ::-webkit-scrollbar-thumb { background: #FF3B30; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #EA6C36; }
+
+    /* Scroll Reveal Classes */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* Custom Input Range */
+    input[type=range] {
+      -webkit-appearance: none;
+      background: transparent;
+      width: 100%;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      height: 6px;
+      border-radius: 999px;
+      background: #333;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background: #FF3B30;
+      cursor: pointer;
+      margin-top: -7px;
+      box-shadow: 0 0 10px rgba(255, 59, 48, 0.6);
+      transition: background 0.3s;
+    }
+    input[type=range]::-webkit-slider-thumb:hover {
+      background: #EA6C36;
+    }
+
+    /* Outlined Text */
+    .text-outline {
+      -webkit-text-stroke: 1px rgba(245, 245, 245, 0.3);
+      color: transparent;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-crimson selection:text-white">
+
+  <!-- ================= NAV ================= -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-obsidian/90 backdrop-blur-md border-b border-white/10 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-2 group">
+          <div class="w-10 h-10 bg-crimson rounded-lg flex items-center justify-center text-white transform group-hover:rotate-12 transition-transform shadow-[0_0_15px_rgba(255,59,48,0.5)]">
+            <i data-lucide="dumbbell" class="w-6 h-6"></i>
+          </div>
+          <span class="font-heading text-2xl uppercase tracking-widest text-concrete font-bold">
+            Body Temple
+          </span>
+        </a>
+
+        <!-- Desktop Links -->
+        <nav class="hidden md:flex gap-8 text-sm font-semibold tracking-wider uppercase text-concrete/70">
+          <a href="#vibe" class="hover:text-crimson transition-colors">The Vibe</a>
+          <a href="#zones" class="hover:text-crimson transition-colors">Zones</a>
+          <a href="#coaches" class="hover:text-crimson transition-colors">Trainers</a>
+          <a href="#reviews" class="hover:text-crimson transition-colors">Reviews</a>
+          <a href="#calculator" class="hover:text-crimson transition-colors">Calculator</a>
+        </nav>
+
+        <!-- CTA & Social -->
+        <div class="flex items-center gap-4">
+          <a href="https://www.instagram.com/fit_body_temple?utm_source=ig_web_button_share_sheet&obrf=ZDNlZDc0MzIxNw==" target="_blank" class="text-concrete/70 hover:text-blaze transition-colors p-2" title="Follow us on Instagram">
+            <i data-lucide="instagram" class="w-5 h-5"></i>
+          </a>
+          <a href="#join" class="hidden sm:inline-block bg-crimson hover:bg-blaze text-white font-heading text-lg px-6 py-2 rounded-md uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(255,59,48,0.4)] hover:shadow-[0_0_25px_rgba(234,108,54,0.6)] hover:-translate-y-1">
+            Join Now
+          </a>
+          
+          <!-- Mobile Menu Toggle -->
+          <button id="mobile-menu-btn" class="md:hidden text-concrete p-2">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile Nav -->
+    <div id="mobile-menu" class="hidden md:hidden bg-darkCard border-t border-white/10 px-4 py-4 flex flex-col gap-4 text-center font-heading uppercase tracking-wider">
+      <a href="#vibe" class="block py-2 text-concrete hover:text-crimson">The Vibe</a>
+      <a href="#zones" class="block py-2 text-concrete hover:text-crimson">Zones</a>
+      <a href="#coaches" class="block py-2 text-concrete hover:text-crimson">Trainers</a>
+      <a href="#reviews" class="block py-2 text-concrete hover:text-crimson">Reviews</a>
+      <a href="#calculator" class="block py-2 text-concrete hover:text-crimson">Calculator</a>
+      <a href="#join" class="bg-crimson text-white py-3 rounded-md shadow-lg shadow-crimson/30">Join Now</a>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80" 
+           alt="Premium Gym Facility" 
+           class="w-full h-full object-cover opacity-40 scale-105 animate-[pulse_10s_ease-in-out_infinite_alternate]" />
+      <div class="absolute inset-0 bg-gradient-to-b from-obsidian/40 via-obsidian/80 to-obsidian"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#121212_100%)]"></div>
+    </div>
+
+    <div class="relative z-10 text-center px-4 max-w-5xl mx-auto w-full flex flex-col items-center">
+      <div class="animate-slide-up opacity-0" style="animation-delay: 0.2s;">
+        <span class="inline-block py-1 px-3 rounded-full border border-crimson/50 bg-crimson/10 text-crimson font-bold text-xs uppercase tracking-[0.2em] mb-4 shadow-[0_0_10px_rgba(255,59,48,0.2)]">
+          5-Star Rated Facility
+        </span>
+      </div>
+      
+      <h1 class="font-heading text-7xl sm:text-8xl md:text-9xl uppercase tracking-tighter text-concrete leading-none animate-slide-up opacity-0" style="animation-delay: 0.4s;">
+        Body <span class="text-crimson">Temple</span>
+      </h1>
+      
+      <p class="mt-6 text-lg sm:text-xl text-concrete/80 font-medium tracking-wide max-w-2xl mx-auto animate-slide-up opacity-0" style="animation-delay: 0.6s;">
+        Jaipur's Elite Fitness Destination. Unmatched energy, expert guidance, and a community built on pure dedication.
+      </p>
+
+      <div class="mt-10 animate-slide-up opacity-0" style="animation-delay: 0.8s;">
+        <a href="#join" class="inline-flex items-center justify-center gap-2 bg-crimson hover:bg-blaze text-white font-heading text-xl px-10 py-5 rounded-sm uppercase tracking-widest transition-all duration-300 shadow-[0_0_20px_rgba(255,59,48,0.5)] hover:shadow-[0_0_40px_rgba(234,108,54,0.7)] hover:scale-105">
+          <span>Join Now</span>
+          <i data-lucide="arrow-right" class="w-6 h-6"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= THE VIBE ================= -->
+  <section id="vibe" class="py-24 bg-obsidian relative">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <i data-lucide="flame" class="w-12 h-12 text-blaze mx-auto mb-6 reveal"></i>
+      <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-concrete leading-tight">
+        <span class="block reveal text-outline text-5xl sm:text-7xl mb-2">The Atmosphere</span>
+        <span class="block reveal reveal-delay-1">Modern & well-maintained equipment.</span>
+        <span class="block text-crimson reveal reveal-delay-2">Safe, respectful, and motivating environment.</span>
+        <span class="block reveal reveal-delay-3 text-2xl sm:text-3xl mt-4 text-concrete/70 font-sans font-normal normal-case">Custom diet and workout plans provided to crush your goals.</span>
+      </h2>
+    </div>
+  </section>
+
+  <!-- ================= TRAINING ZONES ================= -->
+  <section id="zones" class="py-24 bg-darkCard border-y border-white/5 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-16 reveal">
+        <h2 class="font-heading text-5xl uppercase text-concrete tracking-tight">Elite <span class="text-crimson">Training Zones</span></h2>
+        <p class="text-concrete/60 mt-4 text-lg">Built for performance. Engineered for results.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        
+        <!-- Zone 1 -->
+        <div class="group relative rounded-xl overflow-hidden bg-obsidian border border-white/10 reveal cursor-pointer transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(255,59,48,0.3)] hover:border-crimson/50">
+          <div class="h-64 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=800&q=80" alt="Free Weights" class="w-full h-full object-cover opacity-70 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian to-transparent"></div>
+          </div>
+          <div class="p-6 relative z-10 -mt-12">
+            <div class="w-12 h-12 bg-crimson rounded-lg flex items-center justify-center mb-4 text-white shadow-lg">
+              <i data-lucide="dumbbell" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-heading text-2xl uppercase text-concrete mb-2">Free Weights & Dumbbells</h3>
+            <p class="text-concrete/60 text-sm">Heavy lifting sanctuary featuring perfectly maintained knurled dumbbells and Olympic plates.</p>
+          </div>
+        </div>
+
+        <!-- Zone 2 -->
+        <div class="group relative rounded-xl overflow-hidden bg-obsidian border border-white/10 reveal reveal-delay-1 cursor-pointer transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(234,108,54,0.3)] hover:border-blaze/50">
+          <div class="h-64 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=800&q=80" alt="Boxing Arena" class="w-full h-full object-cover opacity-70 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian to-transparent"></div>
+          </div>
+          <div class="p-6 relative z-10 -mt-12">
+            <div class="w-12 h-12 bg-blaze rounded-lg flex items-center justify-center mb-4 text-white shadow-lg">
+              <i data-lucide="swords" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-heading text-2xl uppercase text-concrete mb-2">Boxing Arena</h3>
+            <p class="text-concrete/60 text-sm">Condition your body with high-intensity combat sports training, heavy bags, and open floor space.</p>
+          </div>
+        </div>
+
+        <!-- Zone 3 -->
+        <div class="group relative rounded-xl overflow-hidden bg-obsidian border border-white/10 reveal reveal-delay-2 cursor-pointer transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(255,59,48,0.3)] hover:border-crimson/50">
+          <div class="h-64 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=800&q=80" alt="Pro Machines" class="w-full h-full object-cover opacity-70 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian to-transparent"></div>
+          </div>
+          <div class="p-6 relative z-10 -mt-12">
+            <div class="w-12 h-12 bg-crimson rounded-lg flex items-center justify-center mb-4 text-white shadow-lg">
+              <i data-lucide="cpu" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-heading text-2xl uppercase text-concrete mb-2">Pro Strength Machines</h3>
+            <p class="text-concrete/60 text-sm">State-of-the-art selectorized and plate-loaded machines for isolated muscle hypertrophy.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MEET THE COACHES ================= -->
+  <section id="coaches" class="py-24 bg-obsidian relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        
+        <div class="reveal">
+          <h2 class="font-heading text-5xl uppercase text-concrete tracking-tight leading-none mb-4">
+            Meet <span class="text-crimson">Parag Sir</span>
+          </h2>
+          <p class="text-xl text-concrete font-medium mb-6 uppercase tracking-widest text-blaze">Head Coach & Fitness Architect</p>
+          
+          <div class="space-y-4 text-concrete/80 text-lg">
+            <p class="flex items-start gap-3">
+              <i data-lucide="check-circle-2" class="w-6 h-6 text-crimson shrink-0 mt-0.5"></i>
+              <span><strong>Expert Guidance:</strong> Years of experience forging strength and discipline.</span>
+            </p>
+            <p class="flex items-start gap-3">
+              <i data-lucide="check-circle-2" class="w-6 h-6 text-crimson shrink-0 mt-0.5"></i>
+              <span><strong>Supportive & Motivating:</strong> Pushes you past your limits while ensuring perfect form.</span>
+            </p>
+            <p class="flex items-start gap-3">
+              <i data-lucide="check-circle-2" class="w-6 h-6 text-crimson shrink-0 mt-0.5"></i>
+              <span><strong>Custom Routines:</strong> Tailored diet and workout plans for guaranteed results.</span>
+            </p>
+          </div>
+
+          <a href="#join" class="inline-block mt-10 border-2 border-crimson text-crimson hover:bg-crimson hover:text-white font-heading text-lg px-8 py-3 uppercase tracking-widest transition-all rounded-sm shadow-[0_0_10px_rgba(255,59,48,0.2)]">
+            Train with the Best
+          </a>
+        </div>
+
+        <div class="relative reveal reveal-delay-1">
+          <div class="absolute inset-0 bg-crimson/20 blur-[100px] rounded-full"></div>
+          <div class="relative border-4 border-darkCard rounded-xl overflow-hidden shadow-2xl">
+            <!-- Placeholder for Coach Image -->
+            <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=1000&q=80" alt="Head Coach Parag Sir" class="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-700"/>
+            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-obsidian p-6 pt-20">
+              <h3 class="font-heading text-3xl uppercase text-white shadow-black drop-shadow-md">Parag Sir</h3>
+              <p class="text-crimson font-bold uppercase tracking-wider text-sm">Lead Trainer</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WALL OF FAME (REVIEWS) ================= -->
+  <section id="reviews" class="py-24 bg-darkCard border-t border-white/5 relative overflow-hidden">
+    <!-- Abstract background shape -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-blaze/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16 reveal">
+        <h2 class="font-heading text-5xl uppercase text-concrete tracking-tight">Wall of <span class="text-crimson">Fame</span></h2>
+        <p class="text-concrete/60 mt-4 text-lg">5-Star Google Reviews from our community.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        
+        <!-- Review 1 -->
+        <div class="bg-obsidian border border-white/10 p-8 rounded-xl reveal hover:-translate-y-2 transition-transform duration-300">
+          <div class="flex gap-1 text-blaze mb-4">
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+          </div>
+          <p class="text-concrete/90 italic mb-6">"One of the best gyms with the best trainer, Parag Sir! 💪🔥 Sir is very supportive and ensures perfect form."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-darkCard rounded-full flex items-center justify-center text-concrete font-bold font-heading">RS</div>
+            <div>
+              <h4 class="font-bold text-concrete text-sm">Rahul Singh Gahaloth</h4>
+              <p class="text-xs text-concrete/50">Google Review</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="bg-obsidian border border-white/10 p-8 rounded-xl reveal reveal-delay-1 hover:-translate-y-2 transition-transform duration-300">
+          <div class="flex gap-1 text-blaze mb-4">
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+          </div>
+          <p class="text-concrete/90 italic mb-6">"Trainers are so sweet and helpful while being respectful. They provide you workout routine as well as diet plan. Highly recommended."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-darkCard rounded-full flex items-center justify-center text-concrete font-bold font-heading">RK</div>
+            <div>
+              <h4 class="font-bold text-concrete text-sm">Rush Koo</h4>
+              <p class="text-xs text-concrete/50">Google Review</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="bg-obsidian border border-white/10 p-8 rounded-xl reveal reveal-delay-2 hover:-translate-y-2 transition-transform duration-300">
+          <div class="flex gap-1 text-blaze mb-4">
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+          </div>
+          <p class="text-concrete/90 italic mb-6">"An amazing fitness experience! The energetic atmosphere motivates you to become stronger, healthier, and more confident."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-darkCard rounded-full flex items-center justify-center text-concrete font-bold font-heading">NS</div>
+            <div>
+              <h4 class="font-bold text-concrete text-sm">Neetu Sharma</h4>
+              <p class="text-xs text-concrete/50">Google Review</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MACRO CALCULATOR ================= -->
+  <section id="calculator" class="py-24 bg-obsidian relative border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        
+        <!-- Calculator Controls -->
+        <div class="bg-darkCard p-8 rounded-2xl border border-white/10 shadow-2xl reveal">
+          <h2 class="font-heading text-4xl uppercase text-concrete mb-2">Macro <span class="text-crimson">Calculator</span></h2>
+          <p class="text-concrete/60 text-sm mb-8">Estimate your daily nutritional needs to fuel your progress at Body Temple.</p>
+
+          <div class="space-y-8">
+            <!-- Height Input -->
+            <div>
+              <div class="flex justify-between text-concrete font-bold mb-2">
+                <span>Height</span>
+                <span class="text-crimson font-mono"><span id="height-val">175</span> cm</span>
+              </div>
+              <input type="range" id="height-slider" min="140" max="220" value="175" oninput="updateCalc()">
+            </div>
+
+            <!-- Weight Input -->
+            <div>
+              <div class="flex justify-between text-concrete font-bold mb-2">
+                <span>Weight</span>
+                <span class="text-crimson font-mono"><span id="weight-val">75</span> kg</span>
+              </div>
+              <input type="range" id="weight-slider" min="40" max="150" value="75" oninput="updateCalc()">
+            </div>
+
+            <!-- Goal Selection -->
+            <div>
+              <label class="block text-concrete font-bold mb-3">Primary Goal</label>
+              <div class="grid grid-cols-3 gap-3">
+                <button type="button" onclick="setGoal('cut')" id="btn-cut" class="goal-btn py-2 px-2 rounded-md border border-white/20 bg-obsidian text-concrete text-sm font-bold uppercase transition-colors">
+                  Cut Fat
+                </button>
+                <button type="button" onclick="setGoal('maintain')" id="btn-maintain" class="goal-btn py-2 px-2 rounded-md border border-crimson bg-crimson/20 text-crimson text-sm font-bold uppercase transition-colors active-goal">
+                  Maintain
+                </button>
+                <button type="button" onclick="setGoal('bulk')" id="btn-bulk" class="goal-btn py-2 px-2 rounded-md border border-white/20 bg-obsidian text-concrete text-sm font-bold uppercase transition-colors">
+                  Build Mass
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calculator Results -->
+        <div class="reveal reveal-delay-1">
+          <div class="p-8 rounded-2xl bg-gradient-to-br from-obsidian to-[#1a1010] border border-crimson/20 shadow-[0_0_40px_rgba(255,59,48,0.15)]">
+            <h3 class="text-concrete/60 uppercase tracking-widest text-xs font-bold mb-2">Daily Intake Target</h3>
+            <div class="flex items-baseline gap-2 mb-8 border-b border-white/10 pb-6">
+              <span id="cal-result" class="font-heading text-6xl text-concrete">2,450</span>
+              <span class="text-crimson font-bold text-xl">KCAL</span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-4">
+              <div class="bg-darkCard p-4 rounded-xl text-center border border-white/5">
+                <span class="block text-concrete/50 uppercase text-xs font-bold mb-1">Protein</span>
+                <span id="pro-result" class="font-heading text-3xl text-concrete">150g</span>
+              </div>
+              <div class="bg-darkCard p-4 rounded-xl text-center border border-white/5">
+                <span class="block text-concrete/50 uppercase text-xs font-bold mb-1">Carbs</span>
+                <span id="carb-result" class="font-heading text-3xl text-concrete">260g</span>
+              </div>
+              <div class="bg-darkCard p-4 rounded-xl text-center border border-white/5">
+                <span class="block text-concrete/50 uppercase text-xs font-bold mb-1">Fats</span>
+                <span id="fat-result" class="font-heading text-3xl text-concrete">90g</span>
+              </div>
+            </div>
+            
+            <p class="text-xs text-concrete/40 mt-6 text-center">
+              *Estimations based on standard activity multiplier. Consult our trainers for custom plans.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer id="join" class="bg-obsidian border-t border-white/10 pt-16 pb-8 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid md:grid-cols-3 gap-12 mb-12">
+        
+        <!-- Brand -->
+        <div>
+          <div class="flex items-center gap-2 mb-6">
+            <div class="w-8 h-8 bg-crimson rounded text-white flex items-center justify-center">
+              <i data-lucide="dumbbell" class="w-5 h-5"></i>
+            </div>
+            <span class="font-heading text-xl uppercase tracking-widest text-concrete font-bold">Body Temple Gym</span>
+          </div>
+          <p class="text-concrete/60 text-sm leading-relaxed mb-6">
+            Jaipur's Elite Fitness Destination. Forging strength, discipline, and community every single day.
+          </p>
+          <a href="https://www.instagram.com/fit_body_temple?utm_source=ig_web_button_share_sheet&obrf=ZDNlZDc0MzIxNw==" target="_blank" class="inline-flex items-center gap-2 text-concrete hover:text-blaze transition-colors">
+            <i data-lucide="instagram" class="w-5 h-5"></i>
+            <span class="font-bold text-sm tracking-wider uppercase">Follow on Instagram</span>
+          </a>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+          <h4 class="font-heading uppercase text-lg text-concrete mb-6">Contact & Location</h4>
+          <ul class="space-y-4 text-sm text-concrete/70">
+            <li class="flex items-start gap-3">
+              <i data-lucide="map-pin" class="w-5 h-5 text-crimson shrink-0"></i>
+              <span>31, Muhana Mandi Rd, Kesar Nagar, Kankha Ki Dhani, Jaipur, Rajasthan 302020</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i data-lucide="phone" class="w-5 h-5 text-crimson shrink-0"></i>
+              <span class="font-mono text-concrete font-bold">063754 30915</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Hours -->
+        <div>
+          <h4 class="font-heading uppercase text-lg text-concrete mb-6">Operating Hours</h4>
+          <ul class="space-y-2 text-sm text-concrete/70">
+            <li class="flex justify-between border-b border-white/5 pb-2">
+              <span>Monday - Saturday</span>
+              <span class="text-concrete font-bold">Opens 5:30 AM</span>
+            </li>
+            <li class="flex justify-between pt-2">
+              <span>Sunday</span>
+              <span class="text-crimson font-bold">Closed</span>
+            </li>
+          </ul>
+          <button class="w-full mt-6 bg-crimson hover:bg-blaze text-white font-heading uppercase py-3 rounded shadow-lg transition-all hover:-translate-y-1">
+            Call To Join Now
+          </button>
+        </div>
+
+      </div>
+
+      <div class="text-center border-t border-white/5 pt-8 text-concrete/40 text-xs uppercase tracking-widest">
+        &copy; 2026 Body Temple Gym. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script>
+    // Initialize Icons
+    lucide.createIcons();
+
+    // Mobile Menu Toggle
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+
+    // Scroll Reveal Animation (Intersection Observer)
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Macro Calculator Logic
+    let currentGoal = 'maintain';
+
+    function setGoal(goal) {
+      currentGoal = goal;
+      
+      // Update UI buttons
+      document.querySelectorAll('.goal-btn').forEach(btn => {
+        btn.classList.remove('border-crimson', 'bg-crimson/20', 'text-crimson', 'active-goal');
+        btn.classList.add('border-white/20', 'bg-obsidian', 'text-concrete');
+      });
+      
+      const activeBtn = document.getElementById(`btn-${goal}`);
+      activeBtn.classList.remove('border-white/20', 'bg-obsidian', 'text-concrete');
+      activeBtn.classList.add('border-crimson', 'bg-crimson/20', 'text-crimson', 'active-goal');
+      
+      updateCalc();
+    }
+
+    function updateCalc() {
+      const weight = parseInt(document.getElementById('weight-slider').value);
+      const height = parseInt(document.getElementById('height-slider').value);
+      
+      // Update UI numbers
+      document.getElementById('weight-val').textContent = weight;
+      document.getElementById('height-val').textContent = height;
+
+      // Basic BMR estimation (Mifflin-St Jeor simplified for male avg)
+      // BMR = 10W + 6.25H - 5A + 5 (assuming avg age 30)
+      const bmr = (10 * weight) + (6.25 * height) - (5 * 30) + 5;
+      
+      // TDEE estimation (Moderate exercise multiplier ~ 1.55)
+      let tdee = bmr * 1.55;
+
+      // Adjust based on goal
+      if (currentGoal === 'cut') tdee -= 500;
+      if (currentGoal === 'bulk') tdee += 300;
+
+      tdee = Math.round(tdee);
+
+      // Macro splits (General fitness/bodybuilding starting points)
+      let protein, fats, carbs;
+      
+      if (currentGoal === 'cut') {
+        protein = weight * 2.2; // High protein to preserve muscle
+        fats = weight * 0.9;
+      } else if (currentGoal === 'bulk') {
+        protein = weight * 2.0; 
+        fats = weight * 1.0;
+      } else {
+        protein = weight * 2.0;
+        fats = weight * 1.0;
+      }
+
+      // Remaining calories go to carbs
+      const proteinCals = protein * 4;
+      const fatCals = fats * 9;
+      const remainingCals = tdee - (proteinCals + fatCals);
+      carbs = Math.max(0, remainingCals / 4);
+
+      // Update DOM
+      // Animate numbers briefly
+      const calEl = document.getElementById('cal-result');
+      calEl.style.opacity = 0.5;
+      setTimeout(() => {
+        calEl.textContent = tdee.toLocaleString();
+        document.getElementById('pro-result').textContent = Math.round(protein) + 'g';
+        document.getElementById('fat-result').textContent = Math.round(fats) + 'g';
+        document.getElementById('carb-result').textContent = Math.round(carbs) + 'g';
+        calEl.style.opacity = 1;
+      }, 150);
+    }
+
+    // Initial calculation setup
+    updateCalc();
+
+  </script>
+</body>
+</html>
